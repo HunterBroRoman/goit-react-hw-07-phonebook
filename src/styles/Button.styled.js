@@ -4,6 +4,7 @@ const Button = styled.button`
   width: min-content;
   white-space: nowrap;
   cursor: pointer;
+  background-color: blue;
   padding: 8px;
   border-radius: 4px;
   border: none;
@@ -13,10 +14,12 @@ const Button = styled.button`
   line-height: 1;
   box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
     rgba(45, 35, 66, 0.3) 0 7px 13px -3px, gray 0 -3px 0 inset;
-  transition: box-shadow 0.15s, transform 0.15s;
+  transition: box-shadow 0.30s, transform 0.15s;
   :active {
     box-shadow: gray 0 3px 7px inset;
     transform: translateY(2px);
+    background-color: red;
+
   }
   :not(:last-child) {
     margin-right: 8px;
