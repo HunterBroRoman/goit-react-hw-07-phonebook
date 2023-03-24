@@ -15,6 +15,7 @@ const Form = styled.form`
     input {
       width: min-content;
       margin-top: 10px;
+      background-color: green;
     }
   }
 `;
