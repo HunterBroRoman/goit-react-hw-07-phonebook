@@ -4,8 +4,8 @@ const Form = styled.form`
   width: 360px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 8px;
+  gap: 22px;
+  padding: 10px;
   margin-bottom: 20px;
   border: 1px solid black;
   label {
@@ -13,7 +13,7 @@ const Form = styled.form`
     flex-direction: column;
     input {
       width: min-content;
-      margin-top: 8px;
+      margin-top: 10px;
     }
   }
 `;
