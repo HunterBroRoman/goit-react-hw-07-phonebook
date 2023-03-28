@@ -35,4 +35,4 @@ export const {
   useAddContactMutation,
   useDeleteContatcMutation,
 } = contactsApi;
-//Экспортированные константы useGetContactsQuery, useAddContactMutation и useDeleteContatcMutation используются для выполнения запросов на сервер с помощью соответствующих конечных точек - getContacts, addContact и deleteContatc. Каждая из них возвращает хук, который можно использовать в React-компонентах для получения данных или отправки мутаций.
+//
