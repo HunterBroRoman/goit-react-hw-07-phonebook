@@ -1,18 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import './index.css';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { App } from 'components/App/App';
-import { store } from './redux/store';
+import { filterValue } from 'redux/filterSlice';
+import { selectFilterValue } from 'redux/selectors';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <BrowserRouter basename="goit-react-hw-07-phonebook">
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>
-  </React.StrictMode>
-);
+import { Label, Input } from 'components/Filter/Filter.styled';
+
+export const Filter = () => {
+  const filter = useSelector(selectFilterValue);
+  const dispatch = useDispatch();
+  const handleFilterChange = e => {
+    dispatch(filterValue(e.currentTarget.value));
+  };
+
+  return (
+    <>
+      <Label htmlFor="filter">
+        <Input
+          type="text"
+          name="filter"
+          placeholder="Filter"
+          value={filter}
+          onChange={handleFilterChange}
+          autoComplete="off"
+        />
+      </Label>
+    </>
+  );
+};
+
+export default Filter;
