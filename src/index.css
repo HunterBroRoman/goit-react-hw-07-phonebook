@@ -1,0 +1,16 @@
+@import-normalize; /* bring in normalize.css styles */
+
+body {
+
+  margin: 0;
+  background:#f3f3f3;
+  font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size:16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

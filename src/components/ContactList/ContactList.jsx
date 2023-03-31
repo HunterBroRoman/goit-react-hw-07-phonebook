@@ -1,22 +1,48 @@
 import { useSelector } from 'react-redux';
-import { useGetContactsQuery } from 'redux/contactsApi';
-import { Contact } from 'components/Contact/Contact';
-import { List } from './List.styled';
+import { ThreeCircles } from 'react-loader-spinner';
+import {
+  selectFiltredContacts,
+  selectIsLoading,
+  selectError,
+} from 'redux/selectors';
 
-export const ContactList = () => {
-  const filter = useSelector(state => state.filter);
-  const { data } = useGetContactsQuery();
+import { ContactItem } from '../ContactItem/ContactItem';
+import { List, Item } from 'components/ContactList/ContactList.styled';
 
-  const normalizeFilter = filter.toLowerCase();
-  const filteredContacts = data.filter(contact =>
-    contact.name.toLowerCase().includes(normalizeFilter)
-  );
+export function ContactList() {
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+  const filtredContacts = useSelector(selectFiltredContacts);
 
   return (
-    <List>
-      {filteredContacts.map(({ id, name, phone }) => {
-        return <Contact key={id} id={id} name={name} number={phone} />;
-      })}
-    </List>
+    <>
+      {isLoading && !error && (
+        <ThreeCircles
+          height="100"
+          width="100"
+          color="#f8a035"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+          ariaLabel="three-circles-rotating"
+          outerCircleColor=""
+          innerCircleColor=""
+          middleCircleColor=""
+        />
+      )}
+      {error && <p>{error}</p>}
+      {filtredContacts.length > 0 && !error ? (
+        <List>
+          {filtredContacts.map(({ id, name, number }) => (
+            <Item key={id}>
+              <ContactItem id={id} name={name} number={number} />
+            </Item>
+          ))}
+        </List>
+      ) : (
+        !isLoading && <p>Not found any contact :(</p>
+      )}
+    </>
   );
-};
+}
+export default ContactList;
